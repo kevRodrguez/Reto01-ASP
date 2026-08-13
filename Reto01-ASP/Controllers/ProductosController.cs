@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Reto01_ASP.Models;
 
+namespace Reto01_ASP.Controllers;
+
 public class ProductosController : Controller
 {
 
@@ -17,7 +19,12 @@ public class ProductosController : Controller
 }
     public IActionResult Index()
     {
+        var productos = ObtenerProductos();
+
+        ViewBag.CantidadProductos = productos.Count;
+        ViewBag.NombreTienda = "WebAcademia";
         ViewData["Titulo"] = "Catálogo de Productos";
+
         return View();
     }
 }
