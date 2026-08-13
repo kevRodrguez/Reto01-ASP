@@ -1,5 +1,5 @@
 namespace Reto01_ASP.Models;
-
+//Entidad producto para db context
 
 public class Producto
 {
