@@ -1,5 +1,14 @@
+@model List<Producto>
+
 @{
     ViewData["Title"] = ViewData["Titulo"];
 }
 
 <h1>@ViewData["Titulo"]</h1>
+<p>Tienda: @ViewBag.NombreTienda</p>
+<p>Total de productos: @ViewBag.CantidadProductos</p>
+
+@foreach (var producto in Model)
+{
+    <p>@producto.Id - @producto.Nombre - @producto.Precio</p>
+}

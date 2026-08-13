@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
+using Reto01_ASP.Models;
+
 public class ProductosController : Controller
 {
 
