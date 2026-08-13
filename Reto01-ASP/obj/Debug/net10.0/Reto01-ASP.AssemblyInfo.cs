@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Reto01-ASP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0c722ecb3082c9492d63345ba0f5322cef1ed96")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8473e5592d7c5f93b0c9fca36d0c74e7c5f354c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Reto01-ASP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Reto01-ASP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
