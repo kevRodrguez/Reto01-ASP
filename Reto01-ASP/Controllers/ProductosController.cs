@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Reto01_ASP.Data;
 using Reto01_ASP.Models;
 
@@ -26,9 +25,9 @@ public class ProductosController : Controller
         };
     }
 
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-        var productos = await _context.Productos.ToListAsync();
+        var productos = _context.Productos.ToList();
 
         var model = new CatalogoViewModel
         {
@@ -41,9 +40,9 @@ public class ProductosController : Controller
         return View(model);
     }
 
-    public async Task<IActionResult> Details(int id)
+    public IActionResult Details(int id)
     {
-        var producto = await _context.Productos.FirstOrDefaultAsync(p => p.Id == id);
+        var producto = _context.Productos.FirstOrDefault(p => p.Id == id);
         if (producto == null)
         {
             return NotFound();
