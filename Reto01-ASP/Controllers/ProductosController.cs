@@ -5,33 +5,59 @@ namespace Reto01_ASP.Controllers;
 
 public class ProductosController : Controller
 {
+    private Tienda ObtenerTienda()
+    {
+        return new Tienda
+        {
+            Nombre = "WebAcademia",
+            Descripcion = "Tienda en línea de tecnología y accesorios para estudiantes y profesionales.",
+            Email = "contacto@webacademia.edu.sv",
+            Telefono = "+503 2222-0000",
+            Ubicacion = "Santa Ana, El Salvador"
+        };
+    }
 
     private List<Producto> ObtenerProductos()
-{
-    return new List<Producto>
     {
-        new Producto { Id = 1, Nombre = "Laptop",  Descripcion = "Computadora portátil para trabajo y estudio", Precio = 1200, Stock = 5,  Categoria = "Computación" },
-        new Producto { Id = 2, Nombre = "Mouse",   Descripcion = "Mouse inalámbrico ergonómico", Precio = 25,   Stock = 50, Categoria = "Accesorios" },
-        new Producto { Id = 3, Nombre = "Teclado", Descripcion = "Teclado mecánico RGB", Precio = 60,   Stock = 20, Categoria = "Accesorios" },
-        new Producto { Id = 4, Nombre = "Monitor", Descripcion = "Monitor 27 pulgadas Full HD", Precio = 300,  Stock = 10, Categoria = "Computación" },
-        new Producto { Id = 5, Nombre = "Silla",   Descripcion = "Silla ergonómica de oficina", Precio = 150,  Stock = 8,  Categoria = "Hogar" }
-    };
-}
+        return new List<Producto>
+        {
+            new Producto { Id = 1, Nombre = "Laptop", Descripcion = "Computadora portátil para trabajo y estudio", Precio = 1200, Stock = 5, Categoria = "Computación" },
+            new Producto { Id = 2, Nombre = "Mouse", Descripcion = "Mouse inalámbrico ergonómico", Precio = 25, Stock = 50, Categoria = "Accesorios" },
+            new Producto { Id = 3, Nombre = "Teclado", Descripcion = "Teclado mecánico RGB", Precio = 60, Stock = 20, Categoria = "Accesorios" },
+            new Producto { Id = 4, Nombre = "Monitor", Descripcion = "Monitor 27 pulgadas Full HD", Precio = 300, Stock = 10, Categoria = "Computación" },
+            new Producto { Id = 5, Nombre = "Silla", Descripcion = "Silla ergonómica de oficina", Precio = 150, Stock = 8, Categoria = "Hogar" }
+        };
+    }
+
     public IActionResult Index()
     {
         var productos = ObtenerProductos();
 
-        ViewBag.CantidadProductos = productos.Count;
-        ViewBag.NombreTienda = "WebAcademia";
+        var model = new CatalogoViewModel
+        {
+            Tienda = ObtenerTienda(),
+            Productos = productos
+        };
+
         ViewData["Titulo"] = "Catálogo de Productos";
 
-        return View(productos);
+        return View(model);
     }
 
     public IActionResult Details(int id)
     {
         var producto = ObtenerProductos().FirstOrDefault(p => p.Id == id);
-        if (producto == null) return NotFound();
-        return View(producto);
+        if (producto == null)
+        {
+            return NotFound();
+        }
+
+        var model = new ProductoDetalleViewModel
+        {
+            Producto = producto,
+            Tienda = ObtenerTienda()
+        };
+
+        return View(model);
     }
 }

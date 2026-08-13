@@ -29,3 +29,58 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.catalog-title {
+  font-weight: 700;
+  color: #1b2a4e;
+}
+
+.catalog-subtitle {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+.catalog-card {
+  border: 1px solid #e9ecef;
+  border-radius: 0.75rem;
+}
+
+.catalog-summary {
+  background: linear-gradient(135deg, #1b6ec2 0%, #0f4c9e 100%);
+  color: #fff;
+}
+
+.catalog-summary .card-title,
+.catalog-summary .text-muted {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.summary-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.store-info li {
+  margin-bottom: 0.35rem;
+}
+
+.store-info span {
+  font-weight: 600;
+  color: #495057;
+}
+
+.catalog-table thead th {
+  background-color: #f8f9fa;
+  border-bottom-width: 1px;
+}
+
+.price-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1b6ec2;
+}
+
+.product-details dt {
+  color: #6c757d;
+}

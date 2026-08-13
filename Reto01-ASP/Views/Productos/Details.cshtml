@@ -1,16 +1,81 @@
-@model Producto
+@model ProductoDetalleViewModel
 
 @{
-    ViewData["Title"] = "Detalle del Producto";
+    ViewData["Title"] = $"Detalle - {Model.Producto.Nombre}";
 }
 
-<h1>Detalle del Producto</h1>
+<div class="catalog-header mb-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-2">
+            <li class="breadcrumb-item">
+                <a asp-controller="Productos" asp-action="Index">Catálogo</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Producto.Nombre</li>
+        </ol>
+    </nav>
+    <h1 class="catalog-title">@Model.Producto.Nombre</h1>
+    <p class="catalog-subtitle">Detalle del producto en @Model.Tienda.Nombre</p>
+</div>
 
-<p><strong>Id:</strong> @Model.Id</p>
-<p><strong>Producto:</strong> @Model.Nombre</p>
-<p><strong>Descripción:</strong> @Model.Descripcion</p>
-<p><strong>Precio:</strong> @Model.Precio</p>
-<p><strong>Stock:</strong> @Model.Stock</p>
-<p><strong>Categoría:</strong> @Model.Categoria</p>
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card catalog-card shadow-sm">
+            <div class="card-body">
+                <h2 class="h5 card-title mb-3">Información del producto</h2>
+                <dl class="row product-details mb-0">
+                    <dt class="col-sm-4">Id</dt>
+                    <dd class="col-sm-8">@Model.Producto.Id</dd>
 
-<a asp-controller="Productos" asp-action="Index">Volver al catálogo</a>
+                    <dt class="col-sm-4">Producto</dt>
+                    <dd class="col-sm-8">@Model.Producto.Nombre</dd>
+
+                    <dt class="col-sm-4">Descripción</dt>
+                    <dd class="col-sm-8">@Model.Producto.Descripcion</dd>
+
+                    <dt class="col-sm-4">Categoría</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge text-bg-light">@Model.Producto.Categoria</span>
+                    </dd>
+
+                    <dt class="col-sm-4">Precio</dt>
+                    <dd class="col-sm-8 price-value">$@Model.Producto.Precio.ToString("N2")</dd>
+
+                    <dt class="col-sm-4">Stock</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Producto.Stock > 10)
+                        {
+                            <span class="badge text-bg-success">@Model.Producto.Stock en inventario</span>
+                        }
+                        else if (Model.Producto.Stock > 0)
+                        {
+                            <span class="badge text-bg-warning">@Model.Producto.Stock en inventario</span>
+                        }
+                        else
+                        {
+                            <span class="badge text-bg-danger">Sin stock</span>
+                        }
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card catalog-card shadow-sm mb-4">
+            <div class="card-body">
+                <h2 class="h5 card-title mb-3">Tienda</h2>
+                <p class="mb-1 fw-semibold">@Model.Tienda.Nombre</p>
+                <p class="text-muted mb-2">@Model.Tienda.Descripcion</p>
+                <ul class="list-unstyled store-info mb-0">
+                    <li><span>Ubicación:</span> @Model.Tienda.Ubicacion</li>
+                    <li><span>Email:</span> @Model.Tienda.Email</li>
+                    <li><span>Teléfono:</span> @Model.Tienda.Telefono</li>
+                </ul>
+            </div>
+        </div>
+
+        <a class="btn btn-primary w-100" asp-controller="Productos" asp-action="Index">
+            Volver al catálogo
+        </a>
+    </div>
+</div>
