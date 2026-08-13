@@ -27,4 +27,11 @@ public class ProductosController : Controller
 
         return View(productos);
     }
+
+    public IActionResult Details(int id)
+{
+    var producto = ObtenerProductos().FirstOrDefault(p => p.Id == id);
+    if (producto == null) return NotFound();
+    return View(producto);
+}
 }
