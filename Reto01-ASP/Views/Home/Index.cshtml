@@ -1,5 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Inicio";
+﻿
+@{
+    var fechaActual = DateTime.Now;
 }
 
 <h1>¡Bienvenido al mundo ASP.NET Core!</h1>
+<p>Nombre del estudiante: @ViewData["NombreEstudiante"]</p>
+<p>Carrera: @ViewData["Carrera"]</p>
+<p>Materia: @ViewData["Materia"]</p>
+<p>Sección: @ViewData["Seccion"]</p>
+<p>Fecha actual: @fechaActual</p>
