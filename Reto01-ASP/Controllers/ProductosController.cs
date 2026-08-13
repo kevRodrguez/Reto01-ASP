@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Reto01_ASP.Models;
 
+namespace Reto01_ASP.Controllers;
+
 public class ProductosController : Controller
 {
 
@@ -19,9 +21,9 @@ public class ProductosController : Controller
     {
         var productos = ObtenerProductos();
 
-        ViewData["Titulo"] = "Catálogo de Productos";
-        ViewBag.NombreTienda = "TechStore";
         ViewBag.CantidadProductos = productos.Count;
+        ViewBag.NombreTienda = "WebAcademia";
+        ViewData["Titulo"] = "Catálogo de Productos";
 
         return View(productos);
     }
