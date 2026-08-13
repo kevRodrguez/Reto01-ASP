@@ -7,4 +7,8 @@
         <RootNamespace>Reto01_ASP</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="SQLite" Version="3.53.4" />
+    </ItemGroup>
+
 </Project>
