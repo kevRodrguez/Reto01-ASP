@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Reto01_ASP.Data;
 using Reto01_ASP.Models;
 
@@ -27,7 +28,9 @@ public class ProductosController : Controller
 
     public IActionResult Index()
     {
-        var productos = _context.Productos.ToList();
+        var productos = _context.Productos
+            .Include(p => p.Categoria)
+            .ToList();
 
         var model = new CatalogoViewModel
         {
@@ -42,7 +45,9 @@ public class ProductosController : Controller
 
     public IActionResult Details(int id)
     {
-        var producto = _context.Productos.FirstOrDefault(p => p.Id == id);
+        var producto = _context.Productos
+            .Include(p => p.Categoria)
+            .FirstOrDefault(p => p.Id == id);
         if (producto == null)
         {
             return NotFound();

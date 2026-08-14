@@ -60,7 +60,7 @@
                         <tr>
                             <td class="fw-semibold">@producto.Nombre</td>
                             <td>@producto.Descripcion</td>
-                            <td><span class="badge text-bg-light">@producto.Categoria</span></td>
+                            <td><span class="badge text-bg-light">@producto.Categoria.Nombre</span></td>
                             <td>$@producto.Precio.ToString("N2")</td>
                             <td>
                                 @if (producto.Stock > 10)
